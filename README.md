@@ -1,6 +1,6 @@
 ## 
 ```bash
-# Enable Document AI
+#enable api
 gcloud services enable documentai.googleapis.com
 ```
 ### Environment variables
