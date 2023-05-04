@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <title>Powur AI Demo</title>
     <meta name="description" content="Powur-AI-Demo">
@@ -166,4 +163,3 @@
                 </sl-button>
             </sl-dialog>
     </body>
-</html>
