@@ -75,3 +75,4 @@ gcloud logging read \
   --format "value(textPayload)" \
   --freshness 5m
 ```
+
