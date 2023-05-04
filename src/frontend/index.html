@@ -22,7 +22,7 @@
 
 <div class="float-container" style="float: left">
 
-<div style="align: left">
+<div>
 
 <style>img.thatimage
 {
@@ -32,12 +32,12 @@
 }</style>
 
 
-<img class="thatimage" style="scaledown" alt="Powur.com" src="favicon.gif">
+<img class="thatimage" alt="Powur.com" src="favicon.gif">
 <h4>Powur AI Demo</h4>
 
 </div>  
 </div><br>
-    <sl-card style="align:right">
+    <sl-card>
         <div slot="header">Input</div>
         <sl-select hoist id="location" label="Location"></sl-select>
         <sl-select hoist id="processor" label="Processor"></sl-select>
@@ -63,29 +63,45 @@
             <div class="float-container" style="float: left; margin-right: 5px; text-align: left;">
                 <div class="details-group-example">
                 <sl-details variant="default" size="small" style="width: 100%; margin-top: 0.25rem;"
-                summary="DETAILS. Click to expand">
-                <h3>## !*!* Select 'Entities' from Overlay menu below to display an animated output *!*! ##</h3>
-                <h4>- Wait up to 10 seconds after upload for response to process.</h4>
-                <h5>- Additional options available by clicking the 3 dots to the right.</h5>
-                <h5>- If you don't have a bill on hand, click "Sample" dropdown to select a pre-uploaded example.</h5>
-                <h5>- Some samples were intentionally uploaded blurry, to showcase the flexibility of the processor.</h5>
-                <h5>- Spanish was never trained into the machine learning model at all, however one of the samples is printed in spanish, also to demonstrate flexibility.</h5>
+                summary="To display an animated output, select 'Entities' from the Overlay menu below. Addtl DETAILS. Click to expand">
+             <h3> ###  To display an animated output, select 'Entities' from the Overlay menu below. ### </h3>
+                
+              <h4>  Please note that it may take up to 10 seconds for the response to process after uploading a document. 
+                Additional options are available by clicking the three dots to the right.</h4>
+
+             <h4> If you do not have a bill on hand, select a pre-uploaded example from the "Sample" dropdown. Some samples were 
+                intentionally uploaded in a blurry format to demonstrate the processor's flexibility.</h4>
+                
+           <h4>   It should be noted that Spanish was not included in the machine learning model's training. However, 
+              one of the samples is printed in Spanish to showcase the processor's adaptability.</h4>
                 </sl-details>
                 <sl-details variant="default" size="small" style="width: 100%; margin-top: 0.25rem;"
-                summary="Disclaimer / Explanation of Pitfalls">
-                <h5>- Due to the thin paper, and the reverse side text bleeding through, The SCE bill for Van wasn't able to identify the name field (as a special entity). When the full UB is uploaded, the processor correctly identifies the customer name in many different pages,
-                    and confirms they all match to confirm the accuracy of its findings. If the full bill had been uploaded, the processor would have located and marked the customer name on this page as well. 
-                    This would be completely eliminated with additional training of the processor model.</h5>
-                <h5>Understand that the "entities" fields are specialized fields, which have been custom trained to identify and seperate a few key data fields and extract them out into their own datapoints to allow for automated entry into a database.
-                    The fact that the customer name is not labeled, is completely intentional. The confidence of the field value is under the specified threshold, 
-                    which prevents incorrect data from entering the final dataset. The customers name was in fact correctly read out, which you can verify on the "text" tab to the right. 
-                    The processor just wasn't confident enough to label the field as a specialized "entity"
-                    This document would then be forwarded on to a representative who would perform a manual review, before sending it back to the processor, to further train the machine learning model for better future results.
-                </h5>
-                    <h5>Also, the meter # wasn't identified on the SDGE bill. This would also be a non-issue after further training. The processor was only trained with a small # of samples for SDGE. with 10 more, that issue would be eliminated.</h5>
-                    <h3>The samples are single pages, I encourage you to upload test documents which include all the pages, for a better representation.</h3>
-                    <h4>In both of these examples, the processor still correctly read out this information into searchable raw text form, which you can verify on the "text" tab to the right. Further showing that additional up-training would solve those issues</h4>
-                </sl-details>
+                summary="Disclaimer / Pitfalls">
+                <h5>- It should be noted that the SCE bill for Van was unable to identify the customer name field as a specialized entity due to the thin paper 
+                    and the reverse side text bleeding through. However, upon uploading the full UB, the processor was able to correctly identify the customer 
+                    name across various pages and verify their accuracy by matching them. If the complete bill had been uploaded, the processor would have successfully 
+                    located and marked the customer name on the specific page. This issue could be resolved by providing additional training to the processor model. </h5>
+
+                <h5> - Entities fields are custom-trained specialized fields that extract specific key data points for automated entry into a database. It is intentional 
+                    that the customer name is not labeled as a specialized entity. The confidence, not of the actually readability but of the form field and its location on the document, 
+                    was under the configured threshold in order to prevent incorrect data from being stored into the final dataset. </h5>
+                    
+                <h5> - Although the customer name was in fact accurately read, the processor was not confident enough that what it read out was indeed the customer name, and so it decided 
+                    not to label that field as one of these specialized entities.</h5>
+                    
+                <h5> - Due to this unlabeled field, this document would be forwarded to CS to for a manual human review before being sent back to the processor for further training of 
+                    the machine learning model which would ultimately improve the machine learning models' understanding and lower similar future occurrences.</h5>
+                    
+                <h5> - Additionally, the meter number was not identified on the SDG&E Sample bill. This issue would be resolved by providing more training samples to the processor. 
+                    The current training set comprises only a small number of samples for SDG&but an additional number of training documents would eliminate this issue.</h5>
+                    
+                <h5> - It is recommended that test documents be uploaded that include all pages to provide a more accurate representation. Despite the issues mentioned above, 
+                    the processor still correctly extracted the information into searchable raw text form, just not with enough confidence to identify it as a desired entity. </h5>
+                    
+                <h5> - This can be verified on the "text" tab. This underscores the concept that once the processor receives additional training, it should have no problem 
+                    extracting data from even less than desirable documents.</h5>
+                    
+                    
                 <script>
                     const container = document.querySelector('.details-group-example');
                     // Close all other details when one is shown
@@ -93,7 +109,6 @@
                         [...container.querySelectorAll('sl-details')].map(details => (details.open = event.target === details));
                     });
                 </script>
-                </div>
                 </div>
             <sl-dropdown>
                 <sl-icon slot="trigger" name="three-dots-vertical" style="font-size: 2.5rem;"></sl-icon>
