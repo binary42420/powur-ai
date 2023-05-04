@@ -6,10 +6,14 @@
     <meta name="description" content="Powur-AI-Demo">
 
 
-<meta name="viewport" content="width=device-width; maximum-scale=1.0; initial-scale=1.0; user-scalable=0;">
+    <meta name="viewport" content="width=device-width; maximum-scale=1.0; initial-scale=1.0; user-scalable=0;">
 
 
-    <style> :not(:defined) {visibility: hidden; } </style>
+    <style>
+        :not(:defined) {
+            visibility: hidden;
+        }
+    </style>
     <link rel="shortcut icon" href="favicon.gif">
     <!-- Web Components by Shoelace: https://shoelace.style -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0/dist/themes/light.css" />
@@ -20,28 +24,29 @@
 
 <body>
 
-<div class="float-container" style="float: left">
+    <div class="float-container" style="float: left">
 
-<div>
+        <div>
 
-<style>img.thatimage
-{
-    max-width: 60%;
-    min-width: 80px;
-    height: auto;
-}</style>
+            <style>
+                img.thatimage {
+                    max-width: 40%;
+                    min-width: 80px;
+                    height: auto;
+                }
+            </style>
 
 
-<img class="thatimage" alt="Powur.com" src="favicon.gif">
-<h4>Powur AI Demo</h4>
+            <img class="thatimage" alt="Powur.com" src="favicon.gif">
+            <h4>Powur AI Demo</h4>
 
-</div>  
-</div><br>
+        </div>
+    </div><br>
     <sl-card>
-        <div slot="header">Input</div>
+        <div slot="header" style="width: 40%;">Input</div>
         <sl-select hoist id="location" label="Location"></sl-select>
         <sl-select hoist id="processor" label="Processor"></sl-select>
-        <span id="document"><span>Document</span>
+        <span id="document" style="width: 40%;"><span>Document</span>
             <sl-button-group label="Document">
                 <sl-button id="files" variant="success">
                     <sl-icon slot="prefix" name="file-earmark-arrow-up"></sl-icon>File(s)
@@ -55,53 +60,45 @@
                 </sl-dropdown>
             </sl-button-group>
         </span>
-    </sl-card> 
-    <sl-card id="output-card">
-        <div slot="header">Output
+    </sl-card>
 
-            
-            <div class="float-container" style="float: left; margin-right: 5px; text-align: left;">
-                <div class="details-group-example">
-                <sl-details variant="default" size="small" style="width: 100%; margin-top: 0.25rem;"
-                summary="To display an animated output, select 'Entities' from the Overlay menu below. Addtl DETAILS. Click to expand">
-             <h3> ###  To display an animated output, select 'Entities' from the Overlay menu below. ### </h3>
+<sl-card>
+
+    <div class="details-group-example">
+        <sl-details variant="default" size="small" style="margin-top: 0.25rem; width: 90%;"
+                    summary= "To display an animation, enable 'Entities' below Click Here to expand">
                 
-              <h4>  Please note that it may take up to 10 seconds for the response to process after uploading a document. 
-                Additional options are available by clicking the three dots to the right.</h4>
+                <h5> Please note that it may take up to 10 seconds for the response to process after uploading a
+                    document. Additional options are available by clicking the three dots to the right.</h5>
 
-             <h4> If you do not have a bill on hand, select a pre-uploaded example from the "Sample" dropdown. Some samples were 
-                intentionally uploaded in a blurry format to demonstrate the processor's flexibility.</h4>
+                <h5> If you do not have a bill on hand, select a pre-uploaded example from the "Sample"
+                    dropdown. Some samples were intentionally uploaded in a blurry format to demonstrate the processor's flexibility.</h5>
+
+                <h5> It should be noted that Spanish was not included in the machine learning model's training.
+                    However, one of the samples is printed in Spanish to showcase the processor's adaptability.</h5>
+        </sl-details>
+        <sl-divider style="--spacing: 0.25rem;"></sl-divider>
+        <sl-details variant="default" size="small" style="margin-top: 0.25rem; width: 80%;" summary="Disclaimer / Alpha Pitfalls">
+
+                <h5> - The "Entities" fields are custom-trained for our use-case. The OCR processor is trained to extract
+                    these fields as separate entities, for easy input into a database.
                 
-           <h4>   It should be noted that Spanish was not included in the machine learning model's training. However, 
-              one of the samples is printed in Spanish to showcase the processor's adaptability.</h4>
-                </sl-details>
-                <sl-details variant="default" size="small" style="width: 100%; margin-top: 0.25rem;"
-                summary="Disclaimer / Pitfalls">
-                <h5>- It should be noted that the SCE bill for Van was unable to identify the customer name field as a specialized entity due to the thin paper 
-                    and the reverse side text bleeding through. However, upon uploading the full UB, the processor was able to correctly identify the customer 
-                    name across various pages and verify their accuracy by matching them. If the complete bill had been uploaded, the processor would have successfully 
-                    located and marked the customer name on the specific page. This issue could be resolved by providing additional training to the processor model. </h5>
+                <h5> - If the processor confidence is under a specified threshold, for an entity field, it will mark all the other fields, 
+                    before forwarding the document to a specialist to complete the labeling manually. Once labeled, it is then 
+                    re-submitted to the processor to retrain, and become smarter over time. </h5>
 
-                <h5> - Entities fields are custom-trained specialized fields that extract specific key data points for automated entry into a database. It is intentional 
-                    that the customer name is not labeled as a specialized entity. The confidence, not of the actually readability but of the form field and its location on the document, 
-                    was under the configured threshold in order to prevent incorrect data from being stored into the final dataset. </h5>
+                <h5> - The meter number was not identified on the SDG&E Sample bill. While it did successfully read out the data,
+                    the processor simply hasn't been trained with enough data to always identify the entities. 
+                    With additional up-training of the model, the processor will improve over time.</h5>
+
+                <h5> The current training set comprises only a small number of sample documents for SDG&E. A total of only 40 between SCE, PG&E, and SDG&E
+                    Even with such a small amount of training data, you will find that it is still impressively good at finding these desired entities and
+                    labeling them. </h5>
                     
-                <h5> - Although the customer name was in fact accurately read, the processor was not confident enough that what it read out was indeed the customer name, and so it decided 
-                    not to label that field as one of these specialized entities.</h5>
-                    
-                <h5> - Due to this unlabeled field, this document would be forwarded to CS to for a manual human review before being sent back to the processor for further training of 
-                    the machine learning model which would ultimately improve the machine learning models' understanding and lower similar future occurrences.</h5>
-                    
-                <h5> - Additionally, the meter number was not identified on the SDG&E Sample bill. This issue would be resolved by providing more training samples to the processor. 
-                    The current training set comprises only a small number of samples for SDG&but an additional number of training documents would eliminate this issue.</h5>
-                    
-                <h5> - It is recommended that test documents be uploaded that include all pages to provide a more accurate representation. Despite the issues mentioned above, 
-                    the processor still correctly extracted the information into searchable raw text form, just not with enough confidence to identify it as a desired entity. </h5>
-                    
-                <h5> - This can be verified on the "text" tab. This underscores the concept that once the processor receives additional training, it should have no problem 
-                    extracting data from even less than desirable documents.</h5>
-                    
-                    
+                </h5> The documents that don't meet a pre-defined threshold, will be forwarded for manual review. This is not a bad thing however, it simply means there's less of a chance that erroneous data 
+                    gets passed into the main database. Once reviewed, by re-processing the labeled data into the processor, thats the very best way to 
+                    improve the processor over time.</h5>
+
                 <script>
                     const container = document.querySelector('.details-group-example');
                     // Close all other details when one is shown
@@ -109,76 +106,96 @@
                         [...container.querySelectorAll('sl-details')].map(details => (details.open = event.target === details));
                     });
                 </script>
+            </sl-details>
+</div>
+
+
+</sl-card>
+
+
+
+
+
+
+
+
+<sl-card id="output-card">
+
+    <div slot="header">Output
+
+        <sl-dropdown>
+            <sl-icon slot="trigger" name="three-dots-vertical" style="font-size: 2.0rem;"></sl-icon>
+            <sl-menu id="options">
+                <sl-menu-label>Source code</sl-menu-label>
+                <sl-menu-item id="source-code">View on GitHub
+                    <sl-icon slot="prefix" name="box-arrow-up-right">
+                    </sl-icon></sl-menu-item>
+                <sl-divider></sl-divider>
+                <sl-menu-label>Download</sl-menu-label>
+                <sl-menu-item id="download-docai-json">Json Format
+                    <sl-icon slot="prefix" name="file-earmark-arrow-down"></sl-icon>
+                </sl-menu-item>
+                <sl-menu-item id="download-output-image">Output image
+                    <sl-icon slot="prefix" name="file-earmark-arrow-down"></sl-icon>
+                </sl-menu-item>
+                <sl-divider></sl-divider>
+                <sl-menu-label>Output options</sl-menu-label>
+                <sl-menu-item value="animated" type="checkbox" checked>Animated
+                    <sl-icon slot="prefix" name="film"></sl-icon>
+                </sl-menu-item>
+                <sl-menu-item value="cropped" type="checkbox">Cropped to text
+                    <sl-icon slot="prefix" name="crop"></sl-icon>
+                </sl-menu-item>
+                <sl-menu-item value="confidence" type="checkbox" checked>Confidence
+                    <sl-icon slot="prefix" name="percent"></sl-icon>
+                </sl-menu-item>
+                <sl-menu-item value="normalized" type="checkbox">Normalized values
+                    <sl-icon slot="prefix" name="rulers"></sl-icon>
+                </sl-menu-item>
+                <sl-divider></sl-divider>
+                <sl-menu-label>Output format</sl-menu-label>
+            </sl-menu>
+        </sl-dropdown>
+    </div>
+
+            <div>
+                <sl-tab-group placement="end">
+                    <sl-tab slot="nav" panel="page">Page</sl-tab>
+                    <sl-tab slot="nav" panel="text">Text</sl-tab>
+                    <sl-tab slot="nav" panel="document">Doc.</sl-tab>
+                    <sl-tab-panel name="page">
+                        <sl-select hoist id="page" label="Page"></sl-select>
+                        <sl-select hoist id="overlay" label="Overlay" value="no-info">
+                            <sl-option value="no-info">-None-</sl-option>
+                            <sl-option value="blocks">Blocks (0)</sl-option>
+                            <sl-option value="paragraphs">Paragraphs (0)</sl-option>
+                            <sl-option value="lines">Lines (0)</sl-option>
+                            <sl-option value="tokens">Tokens (0)</sl-option>
+                            <sl-option value="tables">Tables (0)</sl-option>
+                            <sl-option value="barcodes">Barcodes (0)</sl-option>
+                            <sl-option value="fields">Form fields (0)</sl-option>
+                            <sl-option value="entities">Entities (0)</sl-option>
+                        </sl-select>
+                        <img id="output-image" alt="output image">
+                    </sl-tab-panel>
                 </div>
-            <sl-dropdown>
-                <sl-icon slot="trigger" name="three-dots-vertical" style="font-size: 2.5rem;"></sl-icon>
-                <sl-menu id="options">
-                    <sl-menu-label>Source code</sl-menu-label>
-                    <sl-menu-item id="source-code">View on GitHub
-                        <sl-icon slot="prefix" name="box-arrow-up-right">
-                        </sl-icon></sl-menu-item>
-                    <sl-divider></sl-divider>
-                    <sl-menu-label>Download</sl-menu-label>
-                    <sl-menu-item id="download-docai-json">Json Format
-                        <sl-icon slot="prefix" name="file-earmark-arrow-down"></sl-icon>
-                    </sl-menu-item>
-                    <sl-menu-item id="download-output-image">Output image
-                        <sl-icon slot="prefix" name="file-earmark-arrow-down"></sl-icon>
-                    </sl-menu-item>
-                    <sl-divider></sl-divider>
-                    <sl-menu-label>Output options</sl-menu-label>
-                    <sl-menu-item value="animated" type="checkbox"checked>Animated
-                        <sl-icon slot="prefix" name="film"></sl-icon>
-                    </sl-menu-item>
-                    <sl-menu-item value="cropped" type="checkbox">Cropped to text
-                        <sl-icon slot="prefix" name="crop"></sl-icon>
-                    </sl-menu-item>
-                    <sl-menu-item value="confidence" type="checkbox" checked>Confidence
-                        <sl-icon slot="prefix" name="percent"></sl-icon>
-                    </sl-menu-item>
-                    <sl-menu-item value="normalized" type="checkbox">Normalized values
-                        <sl-icon slot="prefix" name="rulers"></sl-icon>
-                    </sl-menu-item>
-                    <sl-divider></sl-divider>
-                    <sl-menu-label>Output format</sl-menu-label>
-                </sl-menu>
-            </sl-dropdown>
-        </div>
-        <sl-tab-group placement="end">
-            <sl-tab slot="nav" panel="page">Page</sl-tab>
-            <sl-tab slot="nav" panel="text">Text</sl-tab>
-            <sl-tab slot="nav" panel="document">Doc.</sl-tab>
-            <sl-tab-panel name="page">
-                <sl-select hoist id="page" label="Page"></sl-select>
-                <sl-select hoist id="overlay" label="Overlay" value="no-info">
-                    <sl-option value="no-info">-None-</sl-option>
-                    <sl-option value="blocks">Blocks (0)</sl-option>
-                    <sl-option value="paragraphs">Paragraphs (0)</sl-option>
-                    <sl-option value="lines">Lines (0)</sl-option>
-                    <sl-option value="tokens">Tokens (0)</sl-option>
-                    <sl-option value="tables">Tables (0)</sl-option>
-                    <sl-option value="barcodes">Barcodes (0)</sl-option>
-                    <sl-option value="fields">Form fields (0)</sl-option>
-                    <sl-option value="entities">Entities (0)</sl-option>
-                </sl-select>
-                <img id="output-image" alt="output image">
-            </sl-tab-panel>
-            
+
+
                     <sl-tab-panel name="text">
-                        <sl-textarea id="document-text" 
-                        placeholder="document.text" rows="6" 
-                        readonly></sl-textarea></sl-tab-panel>
+                        <sl-textarea id="document-text" placeholder="document.text" rows="6"
+                            readonly></sl-textarea></sl-tab-panel>
                     <sl-tab-panel name="document">
                         <sl-tree id="document-tree"></sl-tree>
                     </sl-tab-panel>
-                    
+
                 </sl-tab-group>
-                </sl-card>
-            <sl-dialog id="dialog" label="Focus on the document (at any angle)">
-                <video id="video" playsinline></video>
-                <sl-button id="snapshot" slot="footer" size="large">
-                    <sl-icon slot="prefix" name="camera"></sl-icon>Snapshot
-                </sl-button>
-            </sl-dialog>
-    </body>
+    </sl-card>
+    <sl-dialog id="dialog" label="Focus on the document (at any angle)">
+        <video id="video" playsinline></video>
+        <sl-button id="snapshot" slot="footer" size="large">
+            <sl-icon slot="prefix" name="camera"></sl-icon>Snapshot
+        </sl-button>
+    </sl-dialog>
+</body>
+
 </html>

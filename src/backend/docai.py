@@ -17,7 +17,7 @@ import logging
 from io import BytesIO
 from mimetypes import guess_type
 from pathlib import Path
-from typing import Any, BinaryIO, Mapping, Sequence, TypeAlias, cast
+from typing import Any, BinaryIO, TypeAlias, Mapping, Sequence, cast
 
 from google.cloud.documentai_v1 import (
     Document,
@@ -80,7 +80,7 @@ def process_documents(
 ) -> DocumentData:
     """Analyze the input file(s) with Document AI.
 
-    Return both the Document AI object and its json serialization (which can be viewed/cached).
+    Return both the Document AI object and its json (which can be viewed/cached).
     """
     if not documents:
         raise ValueError("At least one document is expected")
@@ -94,7 +94,7 @@ def process_documents(
     document = process_document(image_io, mime_type, project, location, processor_id)
     json = MessageToJson(
         Document.pb(document),
-        preserving_proto_field_name=True,  # Same as Python (switch if camel case is preferred)
+        preserving_proto_field_name=True,  # Same Python (switch camel case )
         ensure_ascii=False,  # Don't escape characters (easier to read + smaller files)
     )
 
@@ -206,7 +206,7 @@ def get_client_and_parent(
 def frontend_demo_processors(project: str, location: str) -> Mapping[str, str]:
     """Return a mapping of the demo processors to be displayed by the frontend.
 
-    Keys are the processor display names, values are processor-identiying opaque strings.
+    Keys are the processor display names, values are processor-identiying strings.
     """
     demo_processors = {}
 
