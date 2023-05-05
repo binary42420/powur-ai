@@ -1,12 +1,14 @@
 :root {
-    --text-color: #3C4043;
-    --card-border-color: #BDC1C6;
-    --form-bg-color: #F1F3F4;
+
+    --background-color: #e3f0f2;
+    --text-color: #10496b;
+    --card-border-color: #0ba9ff;
+    --form-bg-color: #bddced;
     --drop-zone-active: #C4E2CC;
     --title-font-family: "Google Sans", "Roboto", sans-serif;
     --text-font-family: "Roboto", sans-serif;
     --mono-font-family: "Roboto Mono", "Cascadia Code", monospace;
-    --sl-color-primary-50: #F7FAFE;
+    --sl-color-primary-50: #d1e1ea;
     --sl-color-primary-100: #E3EDFD;
     --sl-color-primary-200: #E8F0FE;
     --sl-color-primary-300: #D2E3FC;
