@@ -4,11 +4,7 @@
 <head>
     <title>Powur AI Demo</title>
     <meta name="description" content="Powur-AI-Demo">
-
-
-    <meta name="viewport" content="width=device-width; maximum-scale=1.0; initial-scale=1.0; user-scalable=0;">
-
-
+    <meta name="viewport" content="width=device-width; maximum-scale:1.0; initial-scale:1.0;">
     <style>
         :not(:defined) {
             visibility: hidden;
@@ -41,7 +37,8 @@
             <h4>Powur AI Demo</h4>
 
         </div>
-    </div><br>
+    </div>
+
     <sl-card>
         <div slot="header" style="width: 40%;">Input</div>
         <sl-select hoist id="location" label="Location"></sl-select>
@@ -51,6 +48,7 @@
                 <sl-button id="files" variant="success">
                     <sl-icon slot="prefix" name="file-earmark-arrow-up"></sl-icon>File(s)
                 </sl-button>
+
                 <sl-dropdown>
                     <sl-button slot="trigger" caret>
                         <sl-icon slot="prefix" name="file-earmark-arrow-down">
@@ -64,7 +62,7 @@
 
 <sl-card>
 
-    <div class="details-group-example">
+    <div class="details-group-example">     
         <sl-details variant="default" size="small" style="margin-top: 0.25rem; width: 90%;"
                     summary= "To display an animation, enable 'Entities' below Click Here to expand">
                 
@@ -77,45 +75,40 @@
                 <h5> It should be noted that Spanish was not included in the machine learning model's training.
                     However, one of the samples is printed in Spanish to showcase the processor's adaptability.</h5>
         </sl-details>
+        
         <sl-divider style="--spacing: 0.25rem;"></sl-divider>
+        
         <sl-details variant="default" size="small" style="margin-top: 0.25rem; width: 80%;" summary="Disclaimer / Alpha Pitfalls">
 
-                <h5> - The "Entities" fields are custom-trained for our use-case. The OCR processor is trained to extract
-                    these fields as separate entities, for easy input into a database.
-                
-                <h5> - If the processor confidence is under a specified threshold, for an entity field, it will mark all the other fields, 
-                    before forwarding the document to a specialist to complete the labeling manually. Once labeled, it is then 
-                    re-submitted to the processor to retrain, and become smarter over time. </h5>
+                        <h5> - The "Entities" fields are custom-trained for our use-case. The OCR processor is trained to extract
+                            these fields as separate entities, for easy input into a database.</h5>
+                        
+                        <h5> - If the processor confidence is under a specified threshold, for an entity field, it will mark all the other fields, 
+                            before forwarding the document to a specialist to complete the labeling manually. Once labeled, it is then 
+                            re-submitted to the processor to retrain, and become smarter over time. </h5>
 
-                <h5> - The meter number was not identified on the SDG&E Sample bill. While it did successfully read out the data,
-                    the processor simply hasn't been trained with enough data to always identify the entities. 
-                    With additional up-training of the model, the processor will improve over time.</h5>
+                        <h5> - The meter number was not identified on the SDG&E Sample bill. While it did successfully read out the data,
+                            the processor simply hasn't been trained with enough data to always identify the entities. 
+                            With additional up-training of the model, the processor will improve over time.</h5>
 
-                <h5> The current training set comprises only a small number of sample documents for SDG&E. A total of only 40 between SCE, PG&E, and SDG&E
-                    Even with such a small amount of training data, you will find that it is still impressively good at finding these desired entities and
-                    labeling them. </h5>
-                    
-                </h5> The documents that don't meet a pre-defined threshold, will be forwarded for manual review. This is not a bad thing however, it simply means there's less of a chance that erroneous data 
-                    gets passed into the main database. Once reviewed, by re-processing the labeled data into the processor, thats the very best way to 
-                    improve the processor over time.</h5>
+                        <h5> The current training set comprises only a small number of sample documents for SDG&E. A total of only 40 between SCE, PG&E, and SDG&E
+                            Even with such a small amount of training data, you will find that it is still impressively good at finding these desired entities and
+                            labeling them. </h5>
+                            
+                        </h5> The documents that don't meet a pre-defined threshold, will be forwarded for manual review. This is not a bad thing however, it simply means there's less of a chance that erroneous data 
+                            gets passed into the main database. Once reviewed, by re-processing the labeled data into the processor, thats the very best way to 
+                            improve the processor over time.</h5>
 
-                <script>
-                    const container = document.querySelector('.details-group-example');
-                    // Close all other details when one is shown
-                    container.addEventListener('sl-show', event => {
-                        [...container.querySelectorAll('sl-details')].map(details => (details.open = event.target === details));
-                    });
-                </script>
+                        <script>
+                            const container = document.querySelector('.details-group-example');
+                            // Close all other details when one is shown
+                            container.addEventListener('sl-show', event => {
+                                [...container.querySelectorAll('sl-details')].map(details => (details.open = event.target === details));
+                            });
+                        </script>
             </sl-details>
-</div>
-
-
+        </div>
 </sl-card>
-
-
-
-
-
 
 
 
@@ -124,38 +117,58 @@
     <div slot="header">Output
 
         <sl-dropdown>
-            <sl-icon slot="trigger" name="three-dots-vertical" style="font-size: 2.0rem;"></sl-icon>
+            <sl-icon slot="trigger" name="three-dots-vertical" style="font-size: 2.0rem;">
+            </sl-icon>
+
+
             <sl-menu id="options">
                 <sl-menu-label>Source code</sl-menu-label>
                 <sl-menu-item id="source-code">View on GitHub
                     <sl-icon slot="prefix" name="box-arrow-up-right">
-                    </sl-icon></sl-menu-item>
+                    </sl-icon>
+                </sl-menu-item>
+
                 <sl-divider></sl-divider>
+
                 <sl-menu-label>Download</sl-menu-label>
+
                 <sl-menu-item id="download-docai-json">Json Format
-                    <sl-icon slot="prefix" name="file-earmark-arrow-down"></sl-icon>
+                        <sl-icon slot="prefix" name="file-earmark-arrow-down">
+                        </sl-icon>
                 </sl-menu-item>
+
                 <sl-menu-item id="download-output-image">Output image
+
                     <sl-icon slot="prefix" name="file-earmark-arrow-down"></sl-icon>
                 </sl-menu-item>
+
                 <sl-divider></sl-divider>
+
                 <sl-menu-label>Output options</sl-menu-label>
+
                 <sl-menu-item value="animated" type="checkbox" checked>Animated
                     <sl-icon slot="prefix" name="film"></sl-icon>
                 </sl-menu-item>
+
                 <sl-menu-item value="cropped" type="checkbox">Cropped to text
                     <sl-icon slot="prefix" name="crop"></sl-icon>
                 </sl-menu-item>
+
                 <sl-menu-item value="confidence" type="checkbox" checked>Confidence
                     <sl-icon slot="prefix" name="percent"></sl-icon>
                 </sl-menu-item>
+
                 <sl-menu-item value="normalized" type="checkbox">Normalized values
                     <sl-icon slot="prefix" name="rulers"></sl-icon>
                 </sl-menu-item>
+
                 <sl-divider></sl-divider>
                 <sl-menu-label>Output format</sl-menu-label>
+
             </sl-menu>
+
         </sl-dropdown>
+
     </div>
 
             <div>
@@ -163,6 +176,7 @@
                     <sl-tab slot="nav" panel="page">Page</sl-tab>
                     <sl-tab slot="nav" panel="text">Text</sl-tab>
                     <sl-tab slot="nav" panel="document">Doc.</sl-tab>
+
                     <sl-tab-panel name="page">
                         <sl-select hoist id="page" label="Page"></sl-select>
                         <sl-select hoist id="overlay" label="Overlay" value="no-info">
@@ -178,8 +192,6 @@
                         </sl-select>
                         <img id="output-image" alt="output image">
                     </sl-tab-panel>
-                </div>
-
 
                     <sl-tab-panel name="text">
                         <sl-textarea id="document-text" placeholder="document.text" rows="6"
