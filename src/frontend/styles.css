@@ -25,6 +25,27 @@ html {
     overflow-y: scroll;
 }
 
+
+.tile_div a {
+    display: block;
+    height: 50px;
+    width: 100px;
+    margin-right: 5px;
+    background-color: #ccc;
+    text-align: center;
+    line-height: 50px;
+    text-decoration: none;
+    vertical-align: center;
+  }
+  
+  .title_div a.last {
+    margin-right: 0;
+  }
+  
+  .clear {
+    clear: both;
+  }
+    
 body,
 sl-button::part(base),
 sl-menu-item::part(base),
@@ -41,9 +62,10 @@ h1 {
     text-align: center;
 }
 
-#output-image {
-    max-width: 100%;
-    margin-top: 0.5rem;
+#output-image{
+    width: 100%;
+    margin-top: 1.0rem;
+
 }
 
 .drop-zone-active {
@@ -51,17 +73,19 @@ h1 {
 }
 
 sl-card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: stretch;
     --border-color: var(--card-border-color);
     --padding: var(--sl-spacing-small);
-    margin-top: 0.5rem;
+    margin: auto;
+    max-width: 100%;
 }
 
 sl-card::part(base) {
     background-color: var(--form-bg-color);
-    width: 95%;
+    max-width: 100%;
+    margin:2px;
+    justify-content: center;
+
 }
 
 sl-card#output-card::part(body) {
@@ -101,8 +125,26 @@ sl-textarea::part(textarea) {
 #output-card [slot='header'] {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: stretch;
+    
 }
+
+.container{
+    display: flex;
+    max-width: 100%;
+    align-content: center;
+    vertical-align: baseline;
+    margin: auto;
+    width: 100%;
+    padding: 10px;
+}
+.box {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+ float: none;
+}
+
 
 sl-icon {
     vertical-align: bottom;
@@ -121,7 +163,6 @@ sl-tree {
     sl-select::part(form-control),
     sl-textarea::part(form-control),
     #document {
-        display: flex;
         align-items: center;
         gap: 0.5rem;
     }
@@ -137,11 +178,12 @@ sl-tree {
     sl-select::part(form-control-input),
     sl-textarea::part(form-control-input),
     #document>sl-button-group {
-        flex: 1 1 auto;
+        flex-grow: 1 1 auto;
     }
 
     #document>span {
         display: inline;
+        min-width: 80%;
     }
 }
 
@@ -149,7 +191,8 @@ sl-tree {
     sl-button::part(label) {
         padding: 0 var(--sl-spacing-x-small);
     }
-}
+    }
+
 
 @media only screen and (max-width: 340px) {
     sl-button::part(label) {

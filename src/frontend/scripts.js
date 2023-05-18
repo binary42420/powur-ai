@@ -805,4 +805,11 @@ async function initApp() {
     initSamples()
 }
 
+(async () => {
+    await customElements.whenDefined('sl-select')
+    const overlay = document.getElementById('overlay')
+    overlay.value = 'entities'
+})()
+
+
 initApp()

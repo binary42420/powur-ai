@@ -1,208 +1,209 @@
 <!DOCTYPE html>
-
-    <html lang="en">
-
-                <head>
-                        <title>Powur AI Demo</title>
-
-                                <meta name="description" content="Powur-AI-Demo">
-
-                                <meta name="viewport" content="width=device-width; maximum-scale:1; initial-scale:1;">
-                                        <style> 
-                                            :not(:defined) {
-                                            visibility: hidden;}
-                                        </style>
-                                        
-                                        <link rel="shortcut icon" href="favicon.gif">
-                        
-                                        <!-- Web Components by Shoelace: https://shoelace.style -->
-                        
-                                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/themes/light.css"/>
-                                        
-                                        <script 
-                                        
-                                        type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/shoelace.js">
-
-                                        </script>
-                        
-                                        <link rel="stylesheet" href="styles.css">
-                                        
-                                        <script 
-                                        
-                                        src="scripts.js" defer>
-
-                                        </script>
-                </head>
+<html lang="en" class="sl-theme-light">
+<!-- -->
+<head>
+    <title>Powur AI Demo</title>
+    <meta name="description" content="Powur-AI-Demo">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>:not(:defined) {visibility: hidden;} </style>
+    <link rel="shortcut_icon" href="favicon.gif">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/themes/light.css">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/shoelace.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/components/select/select.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/components/card/card.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/components/menu/menu.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/components/icon/icon.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/components/dropdown/dropdown.js"></script>
+    <script src="scripts.js" defer></script></head>
 <body>
-    <div class="float-container" style="float: left">
-        <div>
-            <style>
-                img.thatimage {
-                    max-width: 40%;
-                    min-width: 80px;
-                    height: auto;}
-            </style>
+<!-- -->
 
-                <img class="thatimage" alt="Powur.com" src="favicon.gif">
-                
-                <h4>
-                    Powur AI Demo
-                </h4>
-        </div> 
-    </div>
-
+ <!--
+<div class="box">
     <sl-card>
-                <div slot="header" style="width: 40%;">Input
-
-                </div>
-
-                <div>
-                    <sl-select 
-                        hoist id="location" label="Location">
-                    </sl-select>
-
-                    <sl-select 
-                        hoist id="processor" label="Processor">
-                    </sl-select>
-
-                        <span id="document" style="width: 40%;">
-                            Document
-                        </span>
-
-                    <sl-button-group label="Document">
-
-                        <sl-button id="files">                    
-                            <sl-icon slot="prefix" name="file-earmark-arrow-up">
-                            </sl-icon>File(s)                   
+        <div class="row spacing-40 justify-content-between">
+            <div class="logonew"><img src="40.gif" alt="logo"></div>
+         <div>
+                <sl-select hoist="" id="location" label="Location" style="display:none"></sl-select>
+                <sl-select hoist="" id="processor" label="Processor" style="display:none"></sl-select>
+                <span id="document" style="display: none">Document</span>
+                <div class="tile_div">
+                    <sl-button id="files" variant="primary">
+                        <sl-icon slot="prefix" name="file-earmark-arrow-up"></sl-icon>
+                        File(s)
+                    </sl-button>
+                    <sl-dropdown>
+                        <sl-button slot="trigger" caret>
+                            <sl-icon slot="prefix" name="file-earmark-arrow-down"></sl-icon>
+                            Sample
                         </sl-button>
-
-                        <sl-dropdown>
-
-                            <sl-button slot="trigger" caret>
-                                <sl-icon slot="prefix" name="file-earmark-arrow-down">
-                                </sl-icon>Sample
-                            </sl-button>
-
-                            <sl-menu id="samples"></sl-menu>
-
-                        </sl-dropdown>
-
-                    </sl-button-group>
+                        <sl-menu id="samples"></sl-menu>
+                    </sl-dropdown>
                 </div>
-            </span>
+            </div>
+        </div>
     </sl-card>
-    
-    <sl-card>
-    <div class="details-group-example">     
-        <sl-details variant="default" size="small" style="margin-top: 0.25rem; width: 90%;"
-                    summary= "To display an animation, enable 'Entities' below Click Here to expand">        
-                <h5> Please note that it may take up to 10 seconds for the response to process after uploading a
-                    document. Additional options are available by clicking the three dots to the right.</h5>
-                <h5> If you do not have a bill on hand, select a pre-uploaded example from the "Sample"
-                    dropdown. Some samples were intentionally uploaded in a blurry format to demonstrate the processor's flexibility.</h5>
-                <h5> It should be noted that Spanish was not included in the machine learning model's training.
+</div>
+ <sl-card>
+        <div class="details-group-example">
+            <sl-details variant="default" size="small" style="margin-top: 0.25rem; width: 90%;"
+                summary="DETAILS - Click Here to expand">
+                <h3> - Please note that it may take up to 10 seconds for the response to process after uploading a
+                    document. Additional options are available by clicking the three dots to the right.</h3>
+                <h5> - If you do not have a bill handy, select a pre-uploaded sample from the "Sample dropdown. </h5>
+                <h5> Some samples were intentionally uploaded in a blurry format to demonstrate the processor's
+                    flexibility.</h5>
+                <h5> - Worth noting, Spanish was not included in the machine learning model's training.
                     However, one of the samples is printed in Spanish to showcase the processor's adaptability.</h5>
-        </sl-details>
-        <sl-divider style="--spacing: 0.25rem;"></sl-divider>
-        <sl-details variant="default" size="small" style="margin-top: 0.25rem; width: 80%;" summary="Disclaimer / Alpha Pitfalls">
-                        <h5> - The "Entities" fields are custom-trained for our use-case. The OCR processor is trained to extract
-                            these fields as separate entities, for easy input into a database.</h5>
-                        
-                        <h5> - If the processor confidence is under a specified threshold, for an entity field, it will mark all the other fields, 
-                            before forwarding the document to a specialist to complete the labeling manually. Once labeled, it is then 
-                            re-submitted to the processor to retrain, and become smarter over time. </h5>
-                        <h5> - The meter number was not identified on the SDG&E Sample bill. While it did successfully read out the data,
-                            the processor simply hasn't been trained with enough data to always identify the entities. 
-                            With additional up-training of the model, the processor will improve over time.</h5>
-                        <h5> The current training set comprises only a small number of sample documents for SDG&E. A total of only 40 between SCE, PG&E, and SDG&E
-                            Even with such a small amount of training data, you will find that it is still impressively good at finding these desired entities and
-                            labeling them. </h5>
-                            
-                        </h5> The documents that don't meet a pre-defined threshold, will be forwarded for manual review. This is not a bad thing however, it simply means there's less of a chance that erroneous data 
-                            gets passed into the main database. Once reviewed, by re-processing the labeled data into the processor, thats the very best way to 
-                            improve the processor over time.</h5>
-                        <script>
-                            const container = document.querySelector('.details-group-example');
-                            // Close all other details when one is shown
-                            container.addEventListener('sl-show', event => {
-                                [...container.querySelectorAll('sl-details')].map(details => (details.open = event.target === details));
-                            });
-                        </script>
+            </sl-details>
+
+            <sl-divider style="--spacing: 0.25rem;"></sl-divider>
+
+            <sl-details variant="default" size="small" style="margin-top: 0.25rem; width: 90%;"
+                summary="Disclaimer / Alpha Pitfalls">
+                <h4> -The OCR processor is custom-trained to extract specific data fields, such as customer name and
+                    meter number,
+                    from raw text and label them as "entities" for automatic database input. However, if the confidence
+                    threshold for
+                    an entity falls below a pre-configured level, the document is flagged for manual review.
+                    In most cases, the OCR will have still read the data correctly,but not with a high enough confidence
+                    to label it as an entity.
+                    In these cases, a simple click on "mark document as labeled" is all thats required, and the document
+                    is resubmitted for improved
+                    performance over time. Although the current processor may not always identify all entities, any
+                    fields that are not confident
+                    about are flagged for review to prevent erroneous data from entering the database. The processor's
+                    training set is currently small,
+                    comprising just under 40 sample documents, most of which are years old and taken from Google Images.
+                    Additional up-training with
+                    more data will improve the processor's results. Nonetheless, even with the small amount of training
+                    data, the processor is
+                    impressively good at finding and labeling desired entities.
+                </h4>
+                <script>
+                    const container = document.querySelector('.details-group-example');
+                    container.addEventListener('sl-show', event => {
+                        [...container.querySelectorAll('sl-details')].map(details => (details.open = event.target === details));
+                    });
+                </script>
             </sl-details>
         </div>
-</sl-card>
-
-<sl-card id="output-card">
-    <div slot="header">Output
-        <sl-dropdown>
-            <sl-icon slot="trigger" name="three-dots-vertical" style="font-size: 2.0rem;">
-            </sl-icon>
-            <sl-menu id="options">
-                <sl-menu-label>Source code</sl-menu-label>
-                <sl-menu-item id="source-code">View on GitHub
-                    <sl-icon slot="prefix" name="box-arrow-up-right">
-                    </sl-icon>
-                </sl-menu-item>
-                <sl-divider></sl-divider>
-                <sl-menu-label>Download</sl-menu-label>
-                <sl-menu-item id="download-docai-json">Json Format
-                        <sl-icon slot="prefix" name="file-earmark-arrow-down">
-                        </sl-icon>
-                </sl-menu-item>
-                <sl-menu-item id="download-output-image">Output image
-                    <sl-icon slot="prefix" name="file-earmark-arrow-down"></sl-icon>
-                </sl-menu-item>
-                <sl-divider></sl-divider>
-                <sl-menu-label>Output options</sl-menu-label>
-                <sl-menu-item value="animated" type="checkbox" checked>Animated
-                    <sl-icon slot="prefix" name="film"></sl-icon>
-                </sl-menu-item>
-                <sl-menu-item value="cropped" type="checkbox">Cropped to text
-                    <sl-icon slot="prefix" name="crop"></sl-icon>
-                </sl-menu-item>
-                <sl-menu-item value="confidence" type="checkbox" checked>Confidence
-                    <sl-icon slot="prefix" name="percent"></sl-icon>
-                </sl-menu-item>
-                <sl-menu-item value="normalized" type="checkbox">Normalized values
-                    <sl-icon slot="prefix" name="rulers"></sl-icon>
-                </sl-menu-item>
-                <sl-divider></sl-divider>
-                <sl-menu-label>Output format</sl-menu-label>
-            </sl-menu>
-        </sl-dropdown>
-    </div>
-            <div>
-                <sl-tab-group placement="end">
-                    <sl-tab slot="nav" panel="page">Page</sl-tab>
-                    <sl-tab slot="nav" panel="text">Text</sl-tab>
-                    <sl-tab slot="nav" panel="document">Doc.</sl-tab>
-                    <sl-tab-panel name="page">
-                        <sl-select hoist id="page" label="Page"></sl-select>
-                        <sl-select hoist id="overlay" label="Overlay" value="no-info">
-                            <sl-option value="no-info">-None-</sl-option>
-                            <sl-option value="blocks">Blocks (0)</sl-option>
-                            <sl-option value="paragraphs">Paragraphs (0)</sl-option>
-                            <sl-option value="lines">Lines (0)</sl-option>
-                            <sl-option value="tokens">Tokens (0)</sl-option>
-                            <sl-option value="tables">Tables (0)</sl-option>
-                            <sl-option value="barcodes">Barcodes (0)</sl-option>
-                            <sl-option value="fields">Form fields (0)</sl-option>
-                            <sl-option value="entities">Entities (0)</sl-option>
-                        </sl-select>
-                        <img id="output-image" alt="output image">
-                    </sl-tab-panel>
-                    <sl-tab-panel name="text">
-                        <sl-textarea id="document-text" placeholder="document.text" rows="6"
-                            readonly></sl-textarea></sl-tab-panel>
-                    <sl-tab-panel name="document">
-                        <sl-tree id="document-tree"></sl-tree>
-                    </sl-tab-panel>
-                </sl-tab-group>
     </sl-card>
+-->
+
+<div class="box">
+  <img src="40.gif" alt="logo">
+ <div>
+        <sl-card id="output-card" style="min-width: fit-content">
+        <div slot="header">
+             <div>
+                <sl-select hoist="" id="location" label="Location" style="display:none"></sl-select>
+                <sl-select hoist="" id="processor" label="Processor" style="display:none"></sl-select>
+                <span id="document" >Document</span>
+                <div class="tile_div">
+                    <sl-button id="files" variant="primary">
+                        <sl-icon slot="prefix" name="file-earmark-arrow-up"></sl-icon>
+                        File(s)
+                    </sl-button>
+                    <sl-dropdown>
+                        <sl-button slot="trigger" caret>
+                            <sl-icon slot="prefix" name="file-earmark-arrow-down"></sl-icon>
+                            Sample
+                        </sl-button>
+                        <sl-menu id="samples"></sl-menu>
+                    </sl-dropdown>
+                </div>
+            </div>
+
+
+            <sl-dropdown>
+                <sl-icon slot="trigger" name="three-dots-vertical" style="font-size: 2.0rem;"></sl-icon>
+
+                <sl-menu id="options">
+                    <sl-menu-label>Source code</sl-menu-label>
+
+                    <sl-menu-item id="source-code">View on GitHub
+                        <sl-icon slot="prefix" name="box-arrow-up-right"></sl-icon>
+                    </sl-menu-item>
+
+                    <sl-divider></sl-divider>
+
+                    <sl-menu-label>Download</sl-menu-label>
+                    <sl-menu-item id="download-docai-json">Json Format
+                        <sl-icon slot="prefix" name="file-earmark-arrow-down"></sl-icon>
+                    </sl-menu-item>
+
+                    <sl-menu-item id="download-output-image">Output image
+                        <sl-icon slot="prefix" name="file-earmark-arrow-down"></sl-icon>
+                    </sl-menu-item>
+
+                    <sl-divider></sl-divider>
+
+                    <sl-menu-label>Output options</sl-menu-label>
+
+                    <sl-menu-item value="animated" type="checkbox" checked>Animated
+                        <sl-icon slot="prefix" name="film"></sl-icon>
+                    </sl-menu-item>
+
+                    <sl-menu-item value="cropped" type="checkbox">Cropped to text
+                        <sl-icon slot="prefix" name="crop"></sl-icon>
+                    </sl-menu-item>
+
+                    <sl-menu-item value="confidence" type="checkbox" checked>Confidence
+                        <sl-icon slot="prefix" name="percent"></sl-icon>
+                    </sl-menu-item>
+
+                    <sl-menu-item value="normalized" type="checkbox">Normalized values
+                        <sl-icon slot="prefix" name="rulers"></sl-icon>
+                    </sl-menu-item>
+
+                    <sl-divider></sl-divider>
+
+                    <sl-menu-label>Output format</sl-menu-label>
+                </sl-menu>
+            </sl-dropdown>
+            </div>
+            <div>
+            <sl-tab-group placement="end">
+                <sl-tab slot="nav" panel="page">Page</sl-tab>
+                <sl-tab slot="nav" panel="text">Text</sl-tab>
+                <sl-tab slot="nav" panel="document">Doc.</sl-tab>
+
+                <sl-tab-panel name="page">
+                    <sl-select hoist id="page" label="Page"></sl-select>
+                    <sl-select hoist id="overlay" label="Overlay" value="no-info">
+                        <sl-option value="entities">Entities (0)</sl-option>
+                        <sl-option value="no-info">-None-</sl-option>
+                        <sl-option value="blocks">Blocks (0)</sl-option>
+                        <sl-option value="paragraphs">Paragraphs (0)</sl-option>
+                        <sl-option value="lines">Lines (0)</sl-option>
+                        <sl-option value="tokens">Tokens (0)</sl-option>
+                        <sl-option value="tables">Tables (0)</sl-option>
+                        <sl-option value="barcodes">Barcodes (0)</sl-option>
+                        <sl-option value="fields">Form fields (0)</sl-option>
+                    </sl-select>
+                </sl-tab-panel>
+
+                <img id="output-image" alt="output image">
+                <sl-tab-panel name="text">
+                    <sl-textarea id="document-text" placeholder="document.text" rows="6" readonly></sl-textarea>
+                </sl-tab-panel>
+
+                <sl-tab-panel name="document">
+                    <sl-tree id="document-tree">
+                    </sl-tree>
+                </sl-tab-panel>
+            </sl-tab-group>
+            </div>
+        </sl-card></div>
+</div>
+
     <sl-dialog id="dialog" label="Focus on the document (at any angle)">
         <video id="video" playsinline></video>
         <sl-button id="snapshot" slot="footer" size="large">
-            <sl-icon slot="prefix" name="camera"></sl-icon>Snapshot
+            <sl-icon slot="prefix" name="camera">
+            </sl-icon>Snapshot
         </sl-button>
     </sl-dialog>
 </body>
