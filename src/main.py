@@ -18,7 +18,6 @@ import logging
 from io import BytesIO
 from pathlib import Path
 
-import google.auth
 from flask import Flask, jsonify, request, send_file, send_from_directory
 from google.api_core.exceptions import BadRequest, ClientError
 
@@ -27,7 +26,7 @@ from backend import docai, processors, render, samples
 STATIC_FOLDER = "frontend"
 SAMPLES_ROOT = Path("./samples")
 
-_, PROJECT_ID = google.auth.default()
+PROJECT_ID = "steam-lock-391908"
 assert isinstance(PROJECT_ID, str)
 
 app = Flask(__name__, static_folder=STATIC_FOLDER, static_url_path="")
@@ -160,7 +159,7 @@ def init_prod_env():
 
 
 if __name__ == "__main__":
-    init_dev_env()
+    init_prod_env()
 else:
     init_prod_env()
 
