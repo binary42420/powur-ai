@@ -658,7 +658,7 @@ async function initLocation() {
         eLocation.appendChild(option)
         if (location == gParams.apiLocation) match = true
     }
-    if (!match) gParams.apiLocation = null
+    if (!match) gParams.apiLocation = us
 
     if (!gParams.apiLocation && 0 < locations.length)
         gParams.apiLocation = locations[0]
@@ -806,10 +806,9 @@ async function initApp() {
 }
 
 (async () => {
-    await customElements.whenDefined('sl-select')
-    const overlay = document.getElementById('overlay')
-    overlay.value = 'entities'
-})()
-
+    await customElements.whenDefined('sl-option');
+    const overlay = document.getElementById('overlay');
+    overlay.value = 'entities';
+  })();
 
 initApp()
