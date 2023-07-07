@@ -27,7 +27,7 @@ from backend import docai, processors, render, samples
 STATIC_FOLDER = "frontend"
 SAMPLES_ROOT = Path("./samples")
 
-_, PROJECT_ID = google.auth.default()
+PROJECT_ID = "steam-lock-391908"
 assert isinstance(PROJECT_ID, str)
 
 app = Flask(__name__, static_folder=STATIC_FOLDER, static_url_path="")

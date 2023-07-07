@@ -48,9 +48,9 @@ BgColor: TypeAlias = PilColor
 FgColor: TypeAlias = PilColor
 CalloutInfo: TypeAlias = tuple[Vertices | None, str, Rect, Vertex, BgColor, FgColor]
 
-FRAME_DURATION_FIRST = 1000
-FRAME_DURATION_DEFAULT = 150
-FRAME_DURATION_LAST = 2000
+FRAME_DURATION_FIRST = 1800
+FRAME_DURATION_DEFAULT = 1200
+FRAME_DURATION_LAST = 1800
 
 GOOGLE_BLUE = "#4285F4"
 GOOGLE_RED = "#EA4335"
@@ -105,7 +105,7 @@ class Demo:
     document_json: InitVar[str]
     options_json: InitVar[str]
     # Data
-    options: Options = field(init=False)
+    options: Options = field(init=True)
     document: Document = field(init=False)
     page: Page = field(init=False)
     # Rendering
