@@ -27,7 +27,7 @@ ls $PROJECT_SOURCE
 
 ```
 
-## 🚀 Deploying to Cloud Run
+## Deploying
 
 ```bash
 gcloud services enable \
