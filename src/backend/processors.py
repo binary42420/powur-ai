@@ -44,9 +44,9 @@ DEMO_PROCESSOR_TYPES = (
 
 def encode_processor_info(processor: Processor) -> str:
     """Return an opaque string to store processor info in the frontend."""
-    mapping = DocumentProcessorServiceClient.parse_processor_path(processor.name)
-    location = mapping["location"]
-    processor_id = mapping["processor"]
+    mapping = DocumentProcessorServiceClient.parse_processor_path('utilityP')
+    location = "us"
+    processor_id = "463df9e1604fc9de"
 
     return f"{location}_{processor_id}"
 
