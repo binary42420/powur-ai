@@ -34,7 +34,7 @@ import google.auth
 STATIC_FOLDER = "frontend"
 SAMPLES_ROOT = Path("./samples")
 
-PROJECT_ID = "steam-lock-391908"
+_, PROJECT_ID = google.auth.default()
 assert isinstance(PROJECT_ID, str)
 
 app = Flask(__name__, static_folder=STATIC_FOLDER, static_url_path="")

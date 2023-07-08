@@ -17,10 +17,10 @@ import re
 
 from google.cloud.documentai_v1 import DocumentProcessorServiceClient
 from google.cloud.documentai_v1 import Processor
-#from google.cloud.documentai_v1 import DocumentProcessorServiceClient, Processor
+from google.cloud.documentai_v1 import DocumentProcessorServiceClient, Processor
 
 # Processing locations (displayed in the frontend)
-DEMO_PROCESSING_LOCATIONS = "us"
+DEMO_PROCESSING_LOCATIONS = ("us", "eu")
 
 # Processing location used when analyzing a sample
 # Samples are json-cached, so this is only useful in dev mode (before deployment)
