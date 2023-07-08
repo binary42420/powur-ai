@@ -16,6 +16,7 @@ limitations under the License.
 from pathlib import Path
 from typing import Iterator, Mapping, Sequence, TypeAlias
 
+
 # Document AI supported file types
 # See https://cloud.google.com/document-ai/docs/file-types
 SUFFIXES = ("pdf", "gif", "tiff", "tif", "jpeg", "jpg", "png", "bmp", "webp")

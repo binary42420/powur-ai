@@ -14,14 +14,22 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 import functools
-import logging
 from io import BytesIO
+import logging
 from pathlib import Path
 
-from flask import Flask, jsonify, request, send_file, send_from_directory
-from google.api_core.exceptions import BadRequest, ClientError
-
-from backend import docai, processors, render, samples
+from backend import docai
+from backend import processors
+from backend import render
+from backend import samples
+from flask import Flask
+from flask import jsonify
+from flask import request
+from flask import send_file
+from flask import send_from_directory
+from google.api_core.exceptions import BadRequest
+from google.api_core.exceptions import ClientError
+import google.auth
 
 STATIC_FOLDER = "frontend"
 SAMPLES_ROOT = Path("./samples")
@@ -159,8 +167,8 @@ def init_prod_env():
 
 
 if __name__ == "__main__":
-    init_prod_env()
+    init_dev_env()
 else:
-    init_prod_env()
+    init_dev_env()
 
 
